@@ -1,0 +1,15 @@
+[package]
+name = "klark-server"
+version = "0.1.0-alpha"
+license = "GPL-3.0-only"
+description = "A fast and feature-rich media server and collection manager. Part of The Klark Project."
+authors = ["Krystian Wiecheć <krystian.wiechec.p@skiff.com>"]
+homepage = "https://github.com/krystejj/klark-server"
+repository = "https://github.com/krystejj/klark-server"
+
+publish = false
+edition = "2021"
+rust-version = "1.74"
+
+[dependencies]
+actix-web = "4"
