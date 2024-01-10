@@ -1,23 +1,28 @@
-use actix_web::{App, get, HttpResponse, HttpServer, post, Responder};
+mod api;
+mod data;
+use actix_web::{web, App, HttpServer};
+use api::handlers::status;
+use data::config::{init_config, Config};
+use data::sled::init_sled_db;
+use data::sqlite::init_sqlite_db;
+use std::sync::Mutex;
 
-#[get("/")]
-async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello world!")
-}
-
-#[post("/echo")]
-async fn echo(req_body: String) -> impl Responder {
-    HttpResponse::Ok().body(req_body)
+struct AppState {
+  config: Mutex<Config>,
+  sled_db: sled::Db,
+  sqlite_db: sqlx::SqlitePool,
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
-        App::new()
-            .service(hello)
-            .service(echo)
-    })
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+  let config = init_config();
+  let app_state = web::Data::new(AppState {
+    config: Mutex::new(config.clone()),
+    sled_db: init_sled_db(),
+    sqlite_db: init_sqlite_db().await,
+  });
+  HttpServer::new(move || App::new().app_data(app_state.clone()).service(status))
+    .bind(("127.0.0.1", config.port))?
+    .run()
+    .await
 }
