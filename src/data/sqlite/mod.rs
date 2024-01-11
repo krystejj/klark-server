@@ -17,7 +17,7 @@ pub async fn init_sqlite_db() -> SqlitePool {
     .await
     .expect("couldn't create sqlite database connection pool");
 
-  // Create default tables if database was just created
+  // Create default schema for sled database if it was just created
   if !does_db_exist {
     sqlx::query(
       "
@@ -32,7 +32,7 @@ CREATE TABLE user (
     )
     .execute(&db)
     .await
-    .expect("couldn't create default tables in database");
+    .expect("couldn't create default schema in the sqlite database");
   }
   db
 }
