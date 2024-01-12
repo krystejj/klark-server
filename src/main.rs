@@ -1,7 +1,7 @@
 mod api;
 mod data;
 use actix_web::{web, App, HttpServer};
-use api::handlers::status;
+use api::handlers::{init_conf, status};
 use data::config::{init_config, Config};
 use data::sled::init_sled_db;
 use data::sqlite::init_sqlite_db;
@@ -21,8 +21,12 @@ async fn main() -> std::io::Result<()> {
     sled_db: init_sled_db(),
     sqlite_db: init_sqlite_db().await,
   });
-  HttpServer::new(move || App::new().app_data(app_state.clone()).service(status))
-    .bind(("127.0.0.1", config.port))?
-    .run()
-    .await
+  HttpServer::new(move || {
+    App::new()
+      .app_data(app_state.clone())
+      .service(web::scope("/api").service(status).service(init_conf))
+  })
+  .bind(("127.0.0.1", config.port))?
+  .run()
+  .await
 }
