@@ -26,13 +26,15 @@ In development:
 - [Klark Svelte Frontend](https://github.com/krystejj/klark-svelte-frontend) - web, main
 
 ## 📖 Project Management
-All notable changes to this project will be documented in [the changelog file](CHANGELOG.md). The format of that file is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/).
+All notable changes to this project will be documented in the [changelog file](CHANGELOG.md). The format of that file is based on [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/).
 
 This project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+You can find this project backlog in [projects tab](https://github.com/users/krystejj/projects/4/views/1) in this repo.
+
 If you would find any bug, some type of issue or you have an idea for improving a project, you can file a report using [issues page](https://github.com/krystejj/klark-server/issues) in this repo or create a [pull request](https://github.com/krystejj/klark-server/pulls). [Discussions](https://github.com/krystejj/klark-server/discussions) are also available.
 
-You can find this project backlog in [projects tab](https://github.com/users/krystejj/projects/4/views/1) in this repo.
+Information about security lies in [security policy file](SECURITY.md).
 
 ## 🙏 Used Projects and Credits
 This is a list of projects used in development of this project:
