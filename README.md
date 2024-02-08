@@ -1,4 +1,4 @@
-<img src="./.github/assets/klark-banner-275x120.png" alt="Klark banner" />
+<img src="./.github/assets/klark-banner-295x120.png" alt="Klark banner" />
 
 # Klark Server
 A modern and feature-rich media server and collection manager. Part of **The Klark Project**.
@@ -35,6 +35,9 @@ You can find this project backlog in [projects tab](https://github.com/users/kry
 If you would find any bug, some type of issue or you have an idea for improving a project, you can file a report using [issues page](https://github.com/krystejj/klark-server/issues) in this repo or create a [pull request](https://github.com/krystejj/klark-server/pulls). [Discussions](https://github.com/krystejj/klark-server/discussions) are also available.
 
 Information about security lies in [security policy file](SECURITY.md).
+
+## 🔗 Version Compatibility
+Klark server data (databases and configs) schema is still in development. That means, change in data schema can occur at any time. It will be necessary to delete those files so Klark can recreate them using new schema (note that you will lose your data when doing so). This will not be needed when data schema will become stable. When schema becomes stable, new Klark server versions will automatically convert old data files to new schema if such a convertion would be needed.
 
 ## 🙏 Used Projects and Credits
 This is a list of projects used in development of this project:
